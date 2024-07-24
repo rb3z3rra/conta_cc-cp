@@ -23,8 +23,8 @@ function criarConta(op) {
     cc.extrato();
     cc.aplicarJuros();
     cc.extrato();
-    cc.depositar(50);
-    cc.sacar(30);
+    cc.depositar();
+    cc.sacar();
     cc.extrato();
   } else if (op == 2) {
     const cp = new ContaPoupanca(nome, idade, sexo, abreConta, rendimento);
@@ -34,8 +34,8 @@ function criarConta(op) {
     cp.extrato();
     cp.aplicarRendimento();
     cp.extrato();
-    cp.depositar(30);
-    cp.sacar(10);
+    cp.depositar();
+    cp.sacar();
     cp.extrato();
   }
 }

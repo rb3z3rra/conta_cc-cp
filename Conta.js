@@ -1,6 +1,7 @@
 /**
  * Classe pai genérica de conta bancária
  */
+const prompt = require("prompt-sync")();
 const regNome = /[\d]/; // Expressão regular para detectar números
 const regNum = /-\d+/; // Expressão regular para números negativos
 
@@ -12,12 +13,26 @@ class Conta {
     this.sexo = sexo;
     this.saldo = saldo;
   }
-  depositar(valor) {
-    this.saldo += valor;
+  depositar() {
+    const valor = parseFloat(
+      prompt("Informe quanto será o valor do depósito: ")
+    );
+    if (regNum.test(this.valor)) {
+      throw new Error("Preencha um valor válido!");
+    } else {
+      this.saldo += valor;
+    }
   }
 
-  sacar(valor) {
-    this.saldo -= valor;
+  sacar() {
+    const valor = parseFloat(prompt("Informe quanto será o valor do saque: "));
+    if (regNum.test(this.valor)) {
+      throw new Error("Preencha um valor válido!");
+    } else if (this.saldo <= 0 || this.saldo < this.valor) {
+      throw new Error("O saldo");
+    } else {
+      this.saldo -= valor;
+    }
   }
 
   extrato() {
